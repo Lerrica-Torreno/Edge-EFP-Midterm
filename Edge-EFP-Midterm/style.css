@@ -1,0 +1,30 @@
+body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #1a202c;
+        }
+
+        .navbar {
+            background-color: #31335B;
+            color: #E2E8F0;
+        }
+
+        .update-button {
+            background-color: #31335B;
+            color: #FFFFFF;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .update-button:hover {
+            background-color: #2b2d4f;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .card {
+            background-color: transparent;
+            border-radius: 1rem;
+            box-shadow: none;
+            padding: 2rem;
+        }
