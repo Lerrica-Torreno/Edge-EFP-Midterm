@@ -5,7 +5,7 @@ body {
         }
 
         .navbar {
-            background-color: #31335B;
+            background-color: #647f98;
             color: #E2E8F0;
         }
 
@@ -18,7 +18,7 @@ body {
         }
         
         .update-button:hover {
-            background-color: #2b2d4f;
+            background-color: #575a92;
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
 
