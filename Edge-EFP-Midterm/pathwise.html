@@ -3,45 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <title>EDGE Layout</title>
+
+  <!-- Tailwind CDN for navbar -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style-pathwise.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar w-full p-4 flex justify-between items-center rounded-b-xl bg-[#2c2d4f] text-[#d7ad8b]">
+    <div class="flex items-center space-x-5">
+      <!-- Logo -->
+      <img src="company_logo.png" alt="EDGE logo" class="w-14 h-14 object-contain">
+      <span class="text-2xl font-bold">EDGE</span>
+    </div>
+    <div class="space-x-7 text-lg font-semibold">
+      <a href="homepage.html" class="hover:text-black">Home</a>
+      <a href="pathwise.html" class="hover:text-black">Pathwise</a>
+      <a href="certs.html" class="hover:text-black">Certs</a>
+      <a href="workspace.html" class="hover:text-black">Workspace</a>
+    </div>
+  </nav>
+
   <style>
-    /* General styles */
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #c4b8bb; /* light mauve */
-      color: #2c2d4f;
+      font-family: 'Inter', sans-serif;
+      background-color: #FFFFFF;
+      color: #1a202c;
     }
 
-    /* Main grid */
-    .main {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr 1fr;
-      gap: 30px;
-      padding: 40px;
+    .navbar {
+      background-color: #647f98;
+      color: #E2E8F0;
     }
 
-    /* Columns */
-    .column h2, .center h2 {
-      font-size: 26px;
-      margin-bottom: 20px;
-      text-align: center;
-      color: #2c2d4f;
-    }
-
-    /* Cards */
     .card {
-      background-color: #2c2d4f;
-      color: #d7ad8b;
+      background-color: #9ab8dc;
+      color: #18202d;
       padding: 18px;
       border-radius: 20px;
       text-align: left;
-      min-height: 60px;
       margin-bottom: 20px;
-      font-size: 14px;
+      font-size: 0.95rem;
       line-height: 1.5;
+      font-weight: 500;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      cursor: pointer;
     }
 
-    /* Center slideshow */
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      background-color: #77a5dd;
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr 1fr;
+      gap: 20px;
+      padding: 40px;
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+
     .center {
       display: flex;
       flex-direction: column;
@@ -52,7 +77,9 @@
       background-color: #2c2d4f;
       border-radius: 20px;
       width: 100%;
-      height: 500px; /* taller for portrait images */
+      max-width: 400px;
+      margin: 0 auto;
+      height: 500px;
       display: flex;
       overflow: hidden;
       position: relative;
@@ -61,12 +88,12 @@
     .slides {
       display: flex;
       width: 300%;
-      transition: transform 0.5s ease-in-out;
+      transition: transform 0.4s ease-in-out;
     }
 
     .slide {
       min-width: 100%;
-      height: 500px;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -75,12 +102,12 @@
 
     .slide img {
       width: auto;
+      max-width: 100%;
       height: 100%;
-      object-fit: contain; /* keeps portrait ratio */
+      object-fit: contain;
       border-radius: 20px;
     }
 
-    /* Dots */
     .dots {
       margin-top: 12px;
       display: flex;
@@ -101,46 +128,43 @@
       opacity: 1;
       background: #d7ad8b;
     }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      color: #2d3748;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #E2E8F0;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .slideshow {
+        height: 400px;
+        max-width: 100%;
+      }
+    }
   </style>
-  <!-- Tailwind CDN for navbar -->
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-  <!-- Navigation Bar -->
-  <nav class="navbar w-full p-4 flex justify-between items-center rounded-b-xl bg-[#2c2d4f] text-[#d7ad8b]">
-    <div class="flex items-center space-x-5">
-      <!-- Logo -->
-      <img src="company_logo.png" alt="EDGE logo" class="w-14 h-14 object-contain">
-      <span class="text-2xl font-bold">EDGE</span>
-    </div>
-    <div class="space-x-7 text-lg font-semibold">
-      <a href="homepage.html" class="hover:text-white">Home</a>
-      <a href="pathwise.html" class="hover:text-white">Pathwise</a>
-      <a href="certs.html" class="hover:text-white">Certs</a>
-      <a href="workspace.html" class="hover:text-white">Workspace</a>
-    </div>
-  </nav>
 
   <!-- Main content -->
   <div class="main">
     <!-- Left column -->
     <div class="column">
-      <h2>Make it better</h2>
-
-      <!-- Each tip in its own card -->
-      <div class="card">✅ Keep your CV clear and concise (1–2 pages max).</div>
-      <div class="card">✅ Focus on achievements, not just job responsibilities.</div>
-      <div class="card">✅ Tailor your CV for each role you’re applying for.</div>
-      <div class="card">✅ Use action verbs like <em>developed, implemented, improved</em>.</div>
-      <div class="card">✅ Highlight measurable results (e.g., “Improved system efficiency by 20%”).</div>
-      <div class="card">✅ Keep formatting clean and consistent (fonts, spacing, bullet points).</div>
-      <div class="card">✅ Don’t forget to proofread – avoid spelling/grammar mistakes.</div>
-      <div class="card">✅ Include only relevant information (cut unnecessary details).</div>
+      <h2 class="section-title">Tips & Tricks</h2>
+      <div class="card">✅ Research the company before your interview.</div>
+      <div class="card">✅ Practice common interview questions out loud.</div>
+      <div class="card">✅ Highlight real experiences when answering.</div>
+      <div class="card">✅ Be honest about your weaknesses but show improvement.</div>
+      <div class="card">✅ Emphasize teamwork and communication skills.</div>
+      <div class="card">✅ Ask thoughtful questions at the end of the interview.</div>
+      <div class="card">✅ Follow up with a thank-you email.</div>
+      <div class="card">✅ Stay confident but humble.</div>
     </div>
 
     <!-- Center column -->
     <div class="center">
-      <h2>Title</h2>
+      <h2 class="section-title">Check these out!</h2>
       <div class="slideshow">
         <div class="slides">
           <div class="slide"><img src="cv1.jpg" alt="CV Sample 1"></div>
@@ -157,7 +181,7 @@
 
     <!-- Right column -->
     <div class="column">
-      <h2>Be prepared</h2>
+      <h2 class="section-title">Be prepared</h2>
 
       <div class="card">
         <strong>Q1: Can you describe a project where you applied your technical skills?</strong><br>
@@ -206,7 +230,6 @@
       dot.addEventListener('click', () => showSlide(i));
     });
 
-    // Optional autoplay
     setInterval(() => {
       index = (index + 1) % dots.length;
       showSlide(index);
