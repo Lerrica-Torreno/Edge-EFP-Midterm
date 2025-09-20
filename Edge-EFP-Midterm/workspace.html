@@ -2,25 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Workspace - EDGE</title>
 
   <!-- Tailwind + Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style-pathwise.css">
 </head>
 <body>
   <!-- Navigation Bar -->
-  <nav class="navbar w-full p-4 flex justify-between items-center rounded-b-xl bg-[#2c2d4f] text-[#d7ad8b]">
+  <nav class="navbar w-full p-4 flex justify-between items-center rounded-b-xl">
     <div class="flex items-center space-x-5">
       <img src="company_logo.png" alt="EDGE logo" class="w-14 h-14 object-contain">
       <span class="text-2xl font-bold">EDGE</span>
     </div>
-    <div class="space-x-7 text-lg font-semibold">
-      <a href="homepage.html" class="hover:text-black">Home</a>
-      <a href="pathwise.html" class="hover:text-black">Pathwise</a>
-      <a href="certs.html" class="hover:text-black">Certs</a>
-      <a href="workspace.html" class="hover:text-black">Workspace</a>
+    <div class="space-x-7 text-lg font-semibold hidden md:flex">
+      <a href="homepage.html">Home</a>
+      <a href="pathwise.html">Pathwise</a>
+      <a href="certs.html">Certs</a>
+      <a href="workspace.html">Workspace</a>
     </div>
   </nav>
 
@@ -34,6 +35,15 @@
     .navbar {
       background-color: #647f98;
       color: #E2E8F0;
+    }
+
+    .navbar a {
+      color: #E2E8F0;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #ffffff;
     }
 
     /* Flip Cards */
@@ -89,7 +99,7 @@
     }
 
     .flip-card-front {
-      background-color: #7ea0da;
+      background-color: #2c2d4f;
     }
 
     .flip-card-back {
@@ -99,23 +109,34 @@
       padding: 10px;
       text-align: center;
       font-size: 0.7rem;
-      font-weight: 500;
+      font-weight: 300;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding-bottom: 40px;
     }
 
     .flip-card-back .description {
-      margin-top: 50px;
       flex-grow: 1;
+      max-height: calc(100% - 60px);
+      overflow-y: auto;
+      padding: 10px;
+      margin: auto 0;
     }
 
-    .job-title {
-      margin-top: 10px;
-      font-weight: 500;
-      text-align: center;
-      color: #18202d;
-      font-size: 0.75rem;
+    .flip-card-back .description::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    .flip-card-back .description::-webkit-scrollbar-thumb {
+      background-color: #31335B;
+      border-radius: 10px;
+    }
+
+    .flip-card-back .description::-webkit-scrollbar-track {
+      background: transparent;
     }
 
     .redirect-btn {
@@ -131,106 +152,108 @@
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
-    .redirect-btn:hover {
-      background-color: #575a92;
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    .job-title {
+      margin-top: 8px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      text-align: center;
+      color: #2c2d4f;
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      word-wrap: break-word;
+      overflow-wrap: anywhere;
+      line-height: 1.2;
+      max-width: 100%;
     }
 
-    /* Charts + Power BI Flex */
     .charts-container {
       display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      margin: 40px 60px;
+      justify-content: space-between;
       gap: 20px;
+      margin: 40px 60px;
+      flex-wrap: wrap;
     }
 
     .chart-box {
-      background-color: #9ab8dc;
-      color: #18202d;
-      border-radius: 20px;
+      flex: 1;
+      min-width: 400px;
+      background: #f9fafb;
       padding: 20px;
-      width: 45%;
-      min-height: 650px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .chart-box h3 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: #041e4a;
-    }
-
-    .chart-box .insight {
-      margin-top: 10px;
-      font-size: 0.9rem;
-      color: #141414;
-    }
-
-    .powerbi-iframe {
+    .chart-frame {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 100%;
-      height: 100%;
+    }
+
+    .chart-frame iframe {
       border-radius: 10px;
-      overflow: hidden;
+      border: none;
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .flip-card { width: 180px; height: 240px; }
+      .redirect-btn { font-size: 0.65rem; }
+      .chart-frame iframe { height: 280px; }
+    }
+
+    @media (max-width: 480px) {
+      .flip-card { width: 160px; height: 220px; }
+      .redirect-btn { font-size: 0.65rem; }
+      .chart-frame iframe { height: 220px; }
     }
   </style>
 
-  <!-- Page Title -->
   <header class="text-center mt-10">
     <h1 class="text-3xl font-bold">Workspace Dashboard</h1>
     <p class="text-gray-600">2022 - 2024</p>
   </header>
 
-  <!-- Flip Cards Section -->
   <section class="flip-container" id="flip-cards">
-    <!-- Flip cards will be loaded here -->
+    <!-- Flip cards loaded via script -->
   </section>
 
-  <!-- Charts Section with Power BI -->
   <section class="charts-container">
-    <!-- Left Box: Power BI Embed -->
+    <!-- Left Chart -->
     <div class="chart-box">
       <h3>Bar Chart – 3 Major Regions</h3>
-      <iframe 
-        title="EFP (1)" 
-        src="https://app.powerbi.com/reportEmbed?reportId=9848406d-d0a9-4582-b7c0-a151c8a3547c&autoAuth=true&ctid=25ad45ae-475e-4080-aa8a-4ad4527d062f" 
-        frameborder="0" 
-        allowFullScreen="true"
-        class="powerbi-iframe">
-      </iframe>
-      <p class="insight">Luzon has the highest number of IT and CS graduates, Visayas follows with a moderate number, while Mindanao has the fewest, showing regional differences
-</p>
+      <div class="chart-frame">
+        <iframe width="600" height="371" seamless frameborder="0" scrolling="no"
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRc5dwat3FcRVXYS_UOFN4f_rvkRf8SNWBjnAfr806MFCclCeDSfqf2MyLqvKuI9JQApljx4T8lnFSt/pubchart?oid=1911329349&amp;format=interactive"
+          style="display:block; margin:0 auto;">
+        </iframe>
+      </div>
+      <p class="insight">Luzon has the highest number of IT and CS graduates, Visayas follows with a moderate number, while Mindanao has the fewest, showing regional differences.</p>
     </div>
 
-    <!-- Right Box: Line Chart -->
+    <!-- Right Chart -->
     <div class="chart-box">
       <h3>Line Chart – Demand vs Supply</h3>
-      <iframe 
-        title="EFP_Bar-LineChart (1)" 
-        width="100%" 
-        height="100%" 
-        src="https://app.powerbi.com/reportEmbed?reportId=f17111de-6b88-4829-b328-fbe5ffd54f12&autoAuth=true&ctid=25ad45ae-475e-4080-aa8a-4ad4527d062f" 
-        frameborder="0" 
-        allowFullScreen="true"
-        class="powerbi-iframe">
-      </iframe>
-      <p class="insight">In 2022, the IT-BPM sector added 121,000 jobs, increasing to 135,000 jobs in 2023, reflecting continued expansion of the ICT workforce across the Philippines.
-</p>
+      <div class="chart-frame">
+        <iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vST02P75RIlVpoDXGEhQAoIDP0Pc7daQ3jNTyKApW2RITDQr-obpq1jj__NSxN2CBFPihmdOrQRJIXQ/pubchart?oid=1060510102&amp;format=interactive"></iframe>
+      </div>
+      <p class="insight">In 2022, the IT-BPM sector added 121,000 jobs, increasing to 135,000 jobs in 2023, reflecting continued expansion of the ICT workforce across the Philippines.</p>
     </div>
   </section>
 
-  <!-- PapaParse + Flip Cards Script -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <script>
     const flipContainer = document.getElementById('flip-cards');
-
-    // Images for the front of cards
     const jobImages = ['job1.png','job2.png','job3.png','job4.png','job5.png'];
 
     Papa.parse('indemand.csv', {
@@ -238,10 +261,8 @@
       header: true,
       complete: function(results) {
         const data = results.data;
-
         data.slice(0, 5).forEach((item, index) => {
           if(!item.Job) return;
-
           const card = document.createElement('div');
           card.className = 'flip-card';
           card.innerHTML = `
